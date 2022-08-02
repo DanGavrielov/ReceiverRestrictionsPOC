@@ -1,0 +1,30 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.gini.apps.playlink">
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
+    <application>
+        <provider
+            android:authorities="${applicationId}.PlayLinkInitProvider"
+            android:exported="false"
+            android:enabled="true"
+            android:initOrder="-100"
+            android:name=".PlayLinkInitProvider" />
+
+        <receiver android:name=".receivers.MyBroadcastReceiver"
+            android:exported="true"
+            android:directBootAware="true"
+            tools:ignore="UnusedAttribute">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED"/>
+                <action android:name="android.app.action.NEXT_ALARM_CLOCK_CHANGED"/>
+                <action android:name="android.accounts.LOGIN_ACCOUNTS_CHANGED"/>
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

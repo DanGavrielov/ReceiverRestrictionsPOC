@@ -1,0 +1,3 @@
+include ':Playlink'
+include ':app'
+rootProject.name = "AutoLibraryInitializePoc"
